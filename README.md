@@ -1,15 +1,9 @@
-# Paggo Case
+# 🧾 Paggo Case — Desafio Técnico
 
-Desafio técnico para o processo seletivo da Paggo.
+Projeto desenvolvido como parte do processo seletivo da **Paggo**.  
+A proposta envolve a criação de uma aplicação fullstack com upload de faturas, extração de dados via **OCR**, e uso de **LLM (modelo de linguagem)** para interpretar os dados extraídos.
 
-## Estrutura
-- **frontend/**: Aplicação Next.js
-- **backend/**: API NestJS + Prisma
+---
 
-## Como rodar
+## 📁 Estrutura do Projeto
 
-### Frontend
-```bash
-cd frontend
-npm install
-npm run dev

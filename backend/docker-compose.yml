@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: paggoCase-mysql
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: senha123
+      MYSQL_DATABASE: paggo_case_db
+    volumes:
+      - paggoCase-data:/var/lib/mysql
+    restart: unless-stopped
+
+volumes:
+  paggoCase-data:
