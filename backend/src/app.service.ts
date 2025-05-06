@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import type { PrismaService } from './prisma.service';
+// biome-ignore lint/style/useImportType: <explanation>
+import { PrismaService } from './prisma.service';
 
 @Injectable()
 export class AppService {

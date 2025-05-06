@@ -25,5 +25,8 @@ model Invoice {
   cnpj           String
   companyName    String
   invoiceNumber  String
+  displayName    String?   //Nome dado pelo usuário (opcional)
+
+  extractedText  String   @default("")
 }
 
