@@ -27,6 +27,6 @@ model Invoice {
   invoiceNumber  String
   displayName    String?   //Nome dado pelo usuário (opcional)
 
-  extractedText  String   @default("")
+  extractedText  String @db.Text 
 }
 

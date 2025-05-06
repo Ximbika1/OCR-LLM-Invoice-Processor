@@ -19,6 +19,8 @@ CREATE TABLE `Invoice` (
     `cnpj` VARCHAR(191) NOT NULL,
     `companyName` VARCHAR(191) NOT NULL,
     `invoiceNumber` VARCHAR(191) NOT NULL,
+    `displayName` VARCHAR(191) NULL,
+    `extractedText` TEXT NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
