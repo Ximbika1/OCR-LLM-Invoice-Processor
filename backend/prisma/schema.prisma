@@ -11,6 +11,7 @@ model User {
   id        Int       @id @default(autoincrement())
   email     String    @unique
   name      String
+  password  String
   createdAt DateTime  @default(now())
   invoices  Invoice[]
 }
@@ -25,7 +26,7 @@ model Invoice {
   cnpj           String
   companyName    String
   invoiceNumber  String
-  displayName    String?   //Nome dado pelo usuário (opcional)
+  displayName    String
 
   extractedText  String @db.Text 
 }
