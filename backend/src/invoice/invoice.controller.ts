@@ -10,6 +10,8 @@ import {
     Delete,
     Param,
     Query,
+    Res,
+    NotFoundException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 // biome-ignore lint/style/useImportType: <explanation>
@@ -17,7 +19,7 @@ import { InvoiceService } from './invoice.service';
 import { diskStorage } from 'multer';
 import * as path from 'node:path';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'; // importe o guard
-  
+
 @Controller('invoice')
 @UseGuards(JwtAuthGuard) // aplica o guard em todas as rotas desse controller
 export class InvoiceController {
@@ -52,22 +54,31 @@ export class InvoiceController {
         return this.invoiceService.getAllInvoices(userId);
     }
 
-    @Get(':id')
-    async getInvoice(@Param('id') id: string, @Request() req) {
-        const userId = req.user.id;
-        return this.invoiceService.getInvoiceById(Number(id), userId);
-    }
-
+   
     @Get('search')
     async searchInvoices(@Request() req, @Query('name') name: string) {
         const userId = req.user.id;
         return this.invoiceService.searchInvoicesByName(userId, name || '');
     }
 
+    @Get(':id')
+    async getInvoice(@Param('id') id: string, @Request() req) {
+        return this.invoiceService.getInvoiceById(Number(id), req.user.id);
+    }
+
+
     @Delete(':id')
     async deleteInvoice(@Param('id') id: string, @Request() req) {
         const userId = req.user.id;
         return this.invoiceService.deleteInvoice(Number(id), userId);
     }
+
+    @Post(':id/ask')
+    async askAboutInvoice(@Param('id') id: string, @Body() body: { question: string }, @Request() req) {
+        const userId = req.user.id;
+        const question = body.question;
+        return this.invoiceService.askLLMAboutInvoice(Number(id), userId, question);
+    }
+
 }
   
