@@ -16,12 +16,8 @@ export class InvoiceService {
         fileUrl,
         date: new Date(),
         extractedText: result.data.text,
-        amount: 0,
-        cnpj: '',
-        companyName: '',
-        invoiceNumber: '',
         userId,
-        displayName: displayName || "",
+        displayName: displayName,
       },
     });
 
