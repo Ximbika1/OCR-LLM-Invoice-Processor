@@ -13,13 +13,11 @@ async function bootstrap() {
     credentials: true,
   })
 
-  // Cria a pasta uploads se não existir
   const uploadDir = path.join(__dirname, '..', 'uploads');
   if (!fs.existsSync(uploadDir)) {
     fs.mkdirSync(uploadDir);
   }
 
-  // Serve a pasta uploads como arquivos estáticos
   app.useStaticAssets(uploadDir, {
     prefix: '/uploads',
   });
