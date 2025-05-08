@@ -8,6 +8,11 @@ import * as path from 'node:path';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  app.enableCors({
+    origin: 'http://localhost:3001',
+    credentials: true,
+  })
+
   // Cria a pasta uploads se não existir
   const uploadDir = path.join(__dirname, '..', 'uploads');
   if (!fs.existsSync(uploadDir)) {

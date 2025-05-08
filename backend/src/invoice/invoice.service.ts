@@ -115,4 +115,11 @@ export class InvoiceService {
       },
     });
   }
+
+  async getInteractionsByInvoice(invoiceId: number) {
+    return this.prisma.interaction.findMany({
+      where: { invoiceId },
+      orderBy: { createdAt: 'desc' },
+    })
+  }
 }

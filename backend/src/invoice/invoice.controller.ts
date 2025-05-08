@@ -12,6 +12,7 @@ import {
     Query,
     Res,
     NotFoundException,
+    ParseIntPipe,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 // biome-ignore lint/style/useImportType: <explanation>
@@ -80,5 +81,9 @@ export class InvoiceController {
         return this.invoiceService.askLLMAboutInvoice(Number(id), userId, question);
     }
 
+    @Get(':id/interactions')
+    getInteractionsForInvoice(@Param('id', ParseIntPipe) id: number) {
+      return this.invoiceService.getInteractionsByInvoice(id)
+    }
 }
   
